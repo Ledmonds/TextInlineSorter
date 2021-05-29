@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Leuan\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Leuan\\.nuget\\packages"
+    ]
+  }
+}

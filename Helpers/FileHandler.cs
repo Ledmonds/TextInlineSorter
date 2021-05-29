@@ -8,15 +8,24 @@ namespace TextInlineSorter.Helpers
     class FileHandler
     {
         // Properties
-        private static string[] supportedExtensions = { "txt", "csv" };
+        private string[] supportedExtensions { get; set; }
 
 
+        // Constructor
+        public FileHandler()
+        {
+            supportedExtensions = new string[] { "txt", "csv" };
+        }
+
+        
+        // Methods
+        #region FileExists
         /// <summary>
         /// Determines if the file is present at the provided path.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static bool FileExists(string path)
+        public bool FileExists(string path)
         {
             var invalidpathChars = Path.GetInvalidPathChars();
 
@@ -27,14 +36,15 @@ namespace TextInlineSorter.Helpers
 
             return false;
         }
+        #endregion
 
-
+        #region GetFileLines
         /// <summary>
         /// Returns a string array of all the lines in a given file.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static IEnumerable<string> GetFileLines(string path)
+        public IEnumerable<string> GetFileLines(string path)
         {
             if (FileExists(path) && isValidFileExtension(Path.GetExtension(path)))
             {
@@ -43,15 +53,16 @@ namespace TextInlineSorter.Helpers
 
             return null;
         }
+        #endregion
 
-
+        #region GetFileLine
         /// <summary>
         /// Reterives the n'th line of a file if it exists.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="line"></param>
         /// <returns></returns>
-        public static string GetFileLine(string path, int line = 0)
+        public string GetFileLine(string path, int line = 0)
         {
             if (FileExists(path) && isValidFileExtension(Path.GetExtension(path)))
             {
@@ -62,14 +73,15 @@ namespace TextInlineSorter.Helpers
 
             return null;
         }
+        #endregion
 
-
+        #region isValidFileExtension
         /// <summary>
         /// Determines if the file extension passed to the parser is supported by the parser.
         /// </summary>
         /// <param name="extension"></param>
         /// <returns></returns>
-        private static bool isValidFileExtension(string extension)
+        private bool isValidFileExtension(string extension)
         {
             if (!string.IsNullOrEmpty(extension))
             {
@@ -84,5 +96,6 @@ namespace TextInlineSorter.Helpers
             // You straight-up gave me bad input.
             return false;
         }
+        #endregion
     }
 }

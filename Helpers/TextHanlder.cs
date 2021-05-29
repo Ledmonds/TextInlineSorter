@@ -58,6 +58,7 @@ namespace TextInlineSorter.Helpers
             return true;
         }
         #endregion
+
         #region LineParser
         /// <summary>
         /// Parses a single string into its deliminated counterpart.
@@ -78,6 +79,7 @@ namespace TextInlineSorter.Helpers
             return new List<string>();
         }
         #endregion
+
         #region SortLine
         /// <summary>
         /// Sorts a single string alphabetically.
@@ -105,6 +107,7 @@ namespace TextInlineSorter.Helpers
             return line;
         }
         #endregion
+
         #region SortLines
         /// <summary>
         /// Sorts each string in an array of string alphabetically..

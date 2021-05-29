@@ -30,10 +30,15 @@ namespace TextInlineSorter
             delimiter = (args.Length >= 2) ? args[1][0] : DEFAULT_DELIMITER;
             isTextQualifierWrapped = (args.Length >= 3) ? bool.Parse(args[2]) : false;
             qualifier = (args.Length >= 4) ? args[3][0] : DEFAULT_QUALIFIER;
-            
+
+
+            // Handler Declarations
+            var fileHandler = new FileHandler();
+            var textHandler = new TextHandler(delimiter, isTextQualifierWrapped, qualifier);
+
 
             // Checking the input is valid.
-            var lines = FileHandler.GetFileLines(filepath);
+            var lines = fileHandler.GetFileLines(filepath);
             if (lines == null)
             {
                 Console.WriteLine($"Error: The file: {filepath} appears incorrectly formatted, please double check.");
@@ -42,7 +47,6 @@ namespace TextInlineSorter
 
 
             // Sorting lines.
-            var textHandler = new TextHandler(delimiter, isTextQualifierWrapped, qualifier);
             var sortedLines = textHandler.SortLines(lines);
     
 

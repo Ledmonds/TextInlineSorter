@@ -70,7 +70,8 @@ namespace TextInlineSorter.Helpers
             {
                 // Dropout white space around Qualifiers to make it easier.
                 // Action: Implement the Qualifier parsing.
-                var output = line.Split(Delimiter).ToList();
+                var output = line.Split(Delimiter).Select(x => x.Trim());
+                return output;
             }
 
             

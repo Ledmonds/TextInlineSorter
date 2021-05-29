@@ -20,7 +20,7 @@ namespace TextInlineSorter.Helpers
         {
             var invalidpathChars = Path.GetInvalidPathChars();
 
-            if (string.IsNullOrEmpty(path) && !path.Any(x => invalidpathChars.Contains(x)))
+            if (!string.IsNullOrEmpty(path) && !path.Any(x => invalidpathChars.Contains(x)))
             {
                 return File.Exists(path);
             }

@@ -89,12 +89,12 @@ namespace TextInlineSorter.Helpers
             if (!string.IsNullOrEmpty(line))
             {
                 var lineParsed = LineParser(line);
-                var output = lineParsed.OrderBy(x => x).ToList();
+                IEnumerable<string> output = lineParsed.OrderBy(x => x);
 
                 // Drop the Qualifier back in if it is needed.
                 if (IsTextQualifierWrapped)
                 {
-                    output = output.Select(x => $"{Qualifier}{x}{Qualifier}").ToList();
+                    output = output.Select(x => $"{Qualifier}{x}{Qualifier}");
                 }
 
                 
